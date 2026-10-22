@@ -16,7 +16,7 @@ ASTP0 写的；这个仓库只保留**这台机器上真正有效**的部分。
 ## 这套方案做了什么
 
 1. **备份** —— 把机型、包列表、`dumpsys` 结果留档，作为回滚依据
-2. **裁剪** —— 用 `pm disable-user --user 0` 禁掉 16 个广告 / 埋点 / 管家 / 旧桌面相关的包
+2. **裁剪** —— 用 `pm disable-user --user 0` 禁掉 17 个广告 / 埋点 / 管家 / 旧桌面相关的包
 3. **换桌面** —— 装第三方桌面 `com.gathin.tvhome` 并把 HOME 键让给它
 4. **配主题** —— 底栏四个图标、隐藏相册、显示使用统计、10 分钟息屏进时钟屏保
 5. **装影视客户端** —— 见 [librettv-tv](https://github.com/jackson010-stack/librettv-tv)
@@ -99,7 +99,7 @@ TV_HOST=$TV_HOST bash tools/theme.sh themes-redmi
 
 ## 裁剪清单说明
 
-`debloat/astp0-cn.txt` 共 16 个包，分四类：
+`debloat/astp0-cn.txt` 共 17 个包，分四类：
 
 | 类别 | 包 |
 | --- | --- |
@@ -145,7 +145,7 @@ TV_HOST=$TV_HOST bash tools/theme.sh themes-redmi
 ## 目录结构
 
 ```
-debloat/astp0-cn.txt      按本机实测裁剪的 16 个禁用包
+debloat/astp0-cn.txt      按本机实测裁剪的 17 个禁用包
 themes-redmi/config.json  底栏 / 应用库 / 屏保主题配置
 tools/                    上游的 CLI：disable.sh、restore.sh、theme.sh、tv.py、check.py、recovery.py
 docs/redmi-tv-notes.md    完整的踩坑与验证记录
