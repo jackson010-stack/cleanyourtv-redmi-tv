@@ -1,0 +1,10 @@
+# Python
+tools/venv/
+__pycache__/
+
+# 电视的本地 dump：含序列号 / MAC / android_id，不进仓库
+backups/
+backup/
+
+# macOS
+.DS_Store

@@ -1,0 +1,45 @@
+# Xiaomi MiTV-ASTP0 (codename mulan) — 红米电视，国内版 MIUI TV 固件
+# 设备: <电视IP>  固件: 26.3.17.OS3.0.101.0.PSTAATV  Android 9 (SDK 28)
+# 适配: 本清单基于本机实际包列表裁剪（examples/xiaomi-mitv-astp0/debloat.txt 是越南版机器的定制清单，
+#       含大量本机不存在的包，且按越南用户偏好禁掉了小爱同学和投屏，本机不适用）
+#
+# Apply: TV_HOST=<电视IP> tools/disable.sh debloat/astp0-cn.txt
+# Undo:  TV_HOST=<电视IP> tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
+#
+# 全部为 disable-user --user 0（禁用，不是卸载），可一条命令还原。
+# 以下包一律不动：
+#   mitv.service（核心服务）、com.xiaomi.setupwizard（开机向导，持有已保存的 WiFi）、
+#   com.sohu.inputmethod.sogou.tv（搜狗输入法，TV 上唯一的输入法）、com.xiaomi.mitv.settings（系统设置）、
+#   com.xiaomi.account / com.xiaomi.account.auth（账号，商店/支付依赖）、
+#   com.droidlogic / com.droidlogic.tvinput（HDMI/AV/调谐器输入层，禁了会黑屏无信号）、
+#   com.xiaomi.tvqs、com.xiaomi.mitv.systemui、com.xiaomi.mitv.appstore（应用商店）、mitv 的播放器与相册
+
+# ---- 广告 / 购物 / 促销内容 ----
+com.mitv.shoplugin                      # 电视购物插件
+com.xm.webcontent                       # 小米网页框架（广告落地页）
+com.mitv.overseasservice                # 海外服务（国内版无用）
+
+# ---- 埋点 / 推送 / 云控 ----
+com.miui.tv.analytics                   # 使用统计埋点
+com.mitv.cloudcontrol                   # 云控中心
+com.xiaomi.mitv.tvpush.tvpushservice    # 电视推送服务
+
+# ---- 后台常驻 / 管家类 ----
+com.xiaomi.mitv.tvmanager               # 电视管家（弹窗推荐、加速清理）
+com.xiaomi.mitv.healthdiagnosis         # 自诊断服务
+com.xiaomi.mitv.smartpanel              # 智能家居面板
+com.xiaomi.mitv.karaoke.service         # 卡拉OK后台服务
+com.xiaomi.gamecenter.sdk.service.mibox # 游戏中心 SDK
+com.xiaomi.wakeupservice                # 小爱常驻唤醒词（~30% CPU）；遥控器语音键由 com.xiaomi.voicecontrol 处理，不受影响
+com.xiaomi.mitv.hyper.screensaver       # 小米动态屏保（改用新桌面自带的时钟屏保）
+
+# ---- 系统更新：禁用后 OTA 不会再把预装内容装回来 ----
+com.xiaomi.mitv.upgrade
+
+# ---- 小米投屏旧链路（保留 com.xiaomi.mitv.smartshare 无线投屏/乐播） ----
+com.xiaomi.miplay                       # 米家连接服务
+com.xiaomi.mi_connect_service           # continuity 运行时
+
+# ---- 旧桌面：HOME 已由 com.gathin.tvhome 接管，本机实测 set-home-activity 不写入 preferred-activities，
+#      禁用旧桌面后 Home 键才会真正落到新桌面 ----
+com.mitv.tvhome

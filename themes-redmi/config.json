@@ -1,0 +1,18 @@
+{
+  "dock_apps": [
+    "com.ktcp.video",
+    "com.cibn.tv",
+    "com.xiaodianshi.tv.yst",
+    "com.netease.cloudmusic.tv"
+  ],
+  "fill_dock": false,
+  "hidden_apps": [
+    "com.mitv.gallery",
+    "com.xiaomi.tv.gallery"
+  ],
+  "rows_below_dock": 1,
+  "app_library": true,
+  "library_button": true,
+  "show_stats": true,
+  "home_idle_clock_minutes": 10
+}
