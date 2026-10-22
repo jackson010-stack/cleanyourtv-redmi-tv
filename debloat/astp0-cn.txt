@@ -3,8 +3,8 @@
 # 适配: 本清单基于本机实际包列表裁剪（examples/xiaomi-mitv-astp0/debloat.txt 是越南版机器的定制清单，
 #       含大量本机不存在的包，且按越南用户偏好禁掉了小爱同学和投屏，本机不适用）
 #
-# Apply: TV_HOST=<电视IP> tools/disable.sh debloat/astp0-cn.txt
-# Undo:  TV_HOST=<电视IP> tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
+# Apply: TV_HOST=<电视IP> bash tools/disable.sh debloat/astp0-cn.txt
+# Undo:  TV_HOST=<电视IP> bash tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
 #
 # 全部为 disable-user --user 0（禁用，不是卸载），可一条命令还原。
 # 以下包一律不动：

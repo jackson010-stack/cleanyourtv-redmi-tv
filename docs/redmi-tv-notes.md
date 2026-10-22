@@ -19,7 +19,7 @@ tools/venv/bin/python tools/check.py --backup
 ## 二、禁用包
 
 ```bash
-TV_HOST=<电视IP> tools/disable.sh debloat/astp0-cn.txt
+TV_HOST=<电视IP> bash tools/disable.sh debloat/astp0-cn.txt
 ```
 
 清单来自「本机实际包列表」，而不是照抄上游 `examples/xiaomi-mitv-astp0/debloat.txt`
@@ -29,7 +29,7 @@ TV_HOST=<电视IP> tools/disable.sh debloat/astp0-cn.txt
 ### 还原
 
 ```bash
-TV_HOST=<电视IP> tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
+TV_HOST=<电视IP> bash tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
 ```
 
 `pm disable-user` 的状态写在 `packages.xml` 里，所以重启不会丢。
@@ -39,7 +39,7 @@ TV_HOST=<电视IP> tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
 **每次重启，这个包都会被系统重新启用。** 重启后要再禁一次：
 
 ```bash
-TV_HOST=<电视IP> tools/disable.sh <(printf 'com.xiaomi.wakeupservice\n')
+TV_HOST=<电视IP> bash tools/disable.sh <(printf 'com.xiaomi.wakeupservice\n')
 ```
 
 它常驻监听小爱唤醒词，约占 30% CPU。遥控器上的语音键由 `com.xiaomi.voicecontrol` 处理，
@@ -47,10 +47,10 @@ TV_HOST=<电视IP> tools/disable.sh <(printf 'com.xiaomi.wakeupservice\n')
 
 ## 三、换桌面（`com.gathin.tvhome`）
 
-上游 `launcher/build-and-install.sh` 一条命令完成：构建 → 推送 → 安装 → 校验 HOME。
+上游 `bash launcher/build-and-install.sh` 一条命令完成：构建 → 推送 → 安装 → 校验 HOME。
 
 ```bash
-TV_HOST=<电视IP> launcher/build-and-install.sh
+TV_HOST=<电视IP> bash launcher/build-and-install.sh
 # → Home now resolves to com.gathin.tvhome/.MainActivity
 ```
 
@@ -91,7 +91,7 @@ adb shell cmd package resolve-activity --brief \
 ## 四、主题
 
 ```bash
-TV_HOST=<电视IP> tools/theme.sh themes-redmi
+TV_HOST=<电视IP> bash tools/theme.sh themes-redmi
 ```
 
 `theme.sh` 推完配置后会 force-stop + 重启 Home，让桌面重新读配置。

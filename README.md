@@ -27,6 +27,10 @@ ASTP0 写的；这个仓库只保留**这台机器上真正有效**的部分。
 
 ### 0. 准备 ADB
 
+> 仓库里的脚本没有可执行位（发布渠道只保留文件内容，不保留权限），
+> 所以一律用 `bash tools/xxx.sh` 调用；想直接跑的话先
+> `chmod +x tools/*.sh`。
+
 ```bash
 python3 -m venv tools/venv
 tools/venv/bin/pip install -r tools/requirements.txt
@@ -49,13 +53,13 @@ tools/venv/bin/python tools/check.py --backup    # 机型 / 包列表 / 关键 d
 ### 2. 裁剪
 
 ```bash
-TV_HOST=$TV_HOST tools/disable.sh debloat/astp0-cn.txt
+TV_HOST=$TV_HOST bash tools/disable.sh debloat/astp0-cn.txt
 ```
 
 全部是 **disable-user**（禁用，不是卸载），随时可以一条命令还原：
 
 ```bash
-TV_HOST=$TV_HOST tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
+TV_HOST=$TV_HOST bash tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
 ```
 
 ### 3. 换桌面
@@ -65,7 +69,7 @@ TV_HOST=$TV_HOST tools/restore.sh debloat/astp0-cn.txt com.mitv.tvhome
 ```bash
 git clone https://github.com/Gathin23/cleanyourtv.git
 cd cleanyourtv
-launcher/build-and-install.sh          # 构建 → 推送 → 安装 → 校验 HOME
+bash launcher/build-and-install.sh      # 构建 → 推送 → 安装 → 校验 HOME
 ```
 
 > **本机实测：** `set-home-activity` 在这版固件上**静默失败**
@@ -76,7 +80,7 @@ launcher/build-and-install.sh          # 构建 → 推送 → 安装 → 校验
 ### 4. 配主题
 
 ```bash
-TV_HOST=$TV_HOST tools/theme.sh themes-redmi
+TV_HOST=$TV_HOST bash tools/theme.sh themes-redmi
 ```
 
 `themes-redmi/config.json` 的含义：
